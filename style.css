@@ -18,9 +18,10 @@ body {
   color: white;
   font-size: 30px;
 }
+
 .header img {
   height: 250px;
-    width: 250px;
+  width: 250px;
 
 }
 
@@ -33,14 +34,13 @@ body {
 }
 
 .section {
-  /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
   max-height: 200vh;
-      border: 3px solid white;
-    border-radius: 20px;
-      margin-right: 31px;
-    margin-top: 15px;
+  border: 3px solid white;
+  border-radius: 20px;
+  margin-right: 31px;
+  margin-top: 15px;
 }
 
 /* ------------------- Product ------------------- */
@@ -58,7 +58,7 @@ body {
 }
 
 .product {
-  border: 2.8px solid rgba(0, 0, 0, 0);
+  border: 2.8px solid rgba(255, 0, 0, 0);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,16 +69,18 @@ body {
 }
 
 .product:hover {
-  transition: 0.5s;
+  border: 2px solid rgb(255, 255, 255);
+  transition: 1.0s;
 }
 
 .product-name {
   width: 100%;
-     border: 2px solid rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
   text-align: center;
-      font-size: 19px;
+  font-size: 19px;
   background: white;
-    color: black;
+  color: black;
+  border-radius: 8px
 }
 
 .product-price::before {
@@ -112,8 +114,8 @@ body {
 
 .btn-primary:hover {
   border: 2px solid #f552b4;
-  transition: 0.3s;
-  background: #c0c0c0;
+  transition: 0.8s;
+  background: #f552b4;
 
 }
 
@@ -172,10 +174,10 @@ body {
   content: "Total: $ ";
 }
 
-.cart-coupon{
- width: 20%;
-    height: 20%;
-    border-radius: 7px;
-    text-align: center;
-    font-size: 19px;
+.cart-coupon {
+  width: 20%;
+  height: 20%;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 19px;
 }
