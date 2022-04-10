@@ -35,7 +35,7 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
     };
 
     cart.forEach(cartItem => {
-      console.log(cartItem.quantity, cartItem.price);
+      //console.log(cartItem.quantity, cartItem.price);
     });
 
     const isInCart =
@@ -55,8 +55,7 @@ function insertItemToDOM(product) {
     "beforeend",
     `
     <div class="cart-item">
-        <img class="cart-item-image" src="${product.image}" alt="${
-      product.name
+        <img class="cart-item-image" src="${product.image}" alt="${product.name
     }" />
         <h2 class="cart-item-name">${product.name}</h2>
         <h4 class="cart-item-price">${product.price}</h4>
@@ -164,7 +163,7 @@ function addCartFooter() {
     document
       .querySelector('[data-action="apply-coupon"]')
       .addEventListener("click", () => applycoupon());
-     document
+    document
       .querySelector('[data-action="reset-coupon"]')
       .addEventListener("click", () => clearcoupon());
     document
@@ -213,19 +212,19 @@ function saveCart() {
 function applycoupon() {
 
   let count = document.querySelector('[data-action="coupon-count"]').value
-  if (count == 0){
+  if (count == 0) {
     alert("Please Enter The Coupon amount")
-  }else{
-      console.log(count)
-  let cartTotal = 0;
-  cart.forEach(cartItem => (cartTotal += cartItem.quantity * cartItem.price));
-  let discount = cartTotal * count / 100
-  let result = cartTotal - discount
-  document.querySelector('[data-action="total-price"]').innerText = `${result . toFixed(2) }`;
+  } else {
+    //console.log(count)
+    let cartTotal = 0;
+    cart.forEach(cartItem => (cartTotal += cartItem.quantity * cartItem.price));
+    let discount = cartTotal * count / 100
+    let result = cartTotal - discount
+    document.querySelector('[data-action="total-price"]').innerText = `${result.toFixed(2)}`;
   }
 }
 
-function clearcoupon(){
+function clearcoupon() {
   countCartTotal();
   document.querySelector('[data-action="coupon-count"]').value = ""
 }
