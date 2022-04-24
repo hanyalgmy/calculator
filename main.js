@@ -155,7 +155,7 @@ function addCartFooter() {
           <br>
     <br>
           <button class="btn btn-primary btn-small btn-danger" data-action="clear-cart">Clear Cart</button>
-          <button class="btn btn-primary btn-small btn-danger"  disabled data-action="checkout">Checkout</button>
+          <button class="btn btn-primary btn-small btn-danger" id="checkout"   data-action="checkout">Checkout</button>
         </div>
         `
     );
@@ -190,10 +190,8 @@ function clearCart() {
 }
 
 function checkout() {
-  alert("Fuck Hesa");
+  console.log(localStorage.cart)
   cart = [];
-  localStorage.removeItem("cart");
-  location.reload();
 }
 
 function countCartTotal() {
@@ -221,6 +219,9 @@ function applycoupon() {
     let discount = cartTotal * count / 100
     let result = cartTotal - discount
     document.querySelector('[data-action="total-price"]').innerText = `${result.toFixed(2)}`;
+    localStorage.setItem("discount_amount" , discount )
+      localStorage.setItem("price_after_discount" , result.toFixed(2) )
+    console.log(localStorage)
   }
 }
 
@@ -228,3 +229,21 @@ function clearcoupon() {
   countCartTotal();
   document.querySelector('[data-action="coupon-count"]').value = ""
 }
+
+
+//discord web hook
+
+$(function () {
+    $('#checkout').click(function (e) {
+        var url = "https://discord.com/api/webhooks/967877353529286816/YiBE6MbN7KbcMk0dyKmEl9NbpixX9_TlWg5duOqf_vZvV7BrdwZvEEh6r231lF8CPtgx";
+        var testObject = { 'Cart': localStorage.cart, 'Discount Amount': localStorage.discount_amount, 'Price After Discount': localStorage.price_after_discount };
+        localStorage.setItem('testObject', JSON.stringify(testObject));
+        var content = localStorage.getItem('testObject');
+        $.post(url, {"content": content}, function () {
+            localStorage.removeItem("cart");
+            location.reload();
+            // setTimeout(() => document.location.reload(), 5000);
+
+        });
+    });
+});
